@@ -6,6 +6,7 @@
 #define L_DOWNLOAD "下载"
 #define L_ACCEPT "确认"
 #define L_CONTINUE "继续"
+#define L_ARE_YOU_SURE "你确定吗"
 #define L_LOGOUT "退出"
 
 #define L_UT "格林威治时间"
@@ -35,13 +36,15 @@
 #define L_RATE "速率"
 #define L_RANGE "范围"
 #define L_UNKNOWN "未知"
+#define L_FAULT "故障"
 
 // ---------------------------- Index ----------------------------
 // date/time
 #define L_TIME_BROWSER_UT "UT (网络浏览器)"
 
 // weather
-#define L_TEMPERATURE "温度"
+#define L_TELE_TEMPERATURE "望远镜温度"
+#define L_TEMPERATURE "环境温度"
 #define L_PRESSURE "气压"
 #define L_HUMIDITY "相对湿度"
 #define L_DEW_POINT "露点温度"
@@ -298,6 +301,8 @@
 
 // ------------------------ Configuration ------------------------
 
+#define L_BASIC_SET_TITLE "基本的:"
+
 #define L_MAX_SLEW_SPEED "最大回转速度"
 
 // goto Rate
@@ -308,22 +313,27 @@
 #define L_VFAST "更快 (2x)"
 
 // backlash
-#define L_BACKLASH_TITLE "反冲"
-#define L_BACKLASH_RANGE_AXIS1 "轴1，以弧秒为单位0到3600"
-#define L_BACKLASH_RANGE_AXIS2 "轴2，以弧秒为单位0到3600"
+#define L_BACKLASH_RANGE_AXIS1 "间隙，以弧秒为单位，0到3600"
+#define L_BACKLASH_RANGE_AXIS2 "间隙，以弧秒为单位，0到3600"
+#define L_BACKLASH_RANGE_AXIS345 "间隙，在步骤0到32767中"
+
+// deadband/TCF
+#define L_DEADBAND_RANGE_AXIS45 "TCF死区，在步骤1至32767中"
+#define L_TCF_COEF_RANGE_AXIS45 "TCF系数，以微米/度为单位。 C -999.0至999.0"
+#define L_TCF_COEF_EN_AXIS45 "TCF启用，0假或1真"
 
 // limits
-#define L_LIMITS_TITLE "限制"
+#define L_LIMITS_TITLE "范围和开销限制"
 #define L_LIMITS_RANGE_HORIZON "地平线，以+/- 30度为单位"
 #define L_LIMITS_RANGE_OVERHEAD "上限，以60到90度为单位"
 #define L_LIMITS_RANGE_MERIDIAN_E "如果将望远镜放在坐骑的东侧，则指向子午线，以+/- 180度为单位"
 #define L_LIMITS_RANGE_MERIDIAN_W "如果将望远镜放在坐骑西侧，则指向子午线，以+/- 180度为单位"
 
 // location
-#define L_LOCATION_TITLE "坐标"
+#define L_LOCATION_TITLE "站点纬度，经度，UTC偏移"
 #define L_LOCATION_LONG "经度，以度和分钟为单位。+ /-180，W为+"
 #define L_LOCATION_LAT "纬度，以度和分钟为单位。+ /-90，N为+"
-#define L_LOCATION_RANGE_UTC_OFFSET "UTC偏移，以-12到+14小时为单位"
+#define L_LOCATION_RANGE_UTC_OFFSET "UTC偏移，以-14到+12小时为单位"
 #define L_LOCATION_MESSAGE_UTC_OFFSET "标准时间的相对时区值（无冬季时间！）"
 
 // ----------------------------  WiFi ----------------------------

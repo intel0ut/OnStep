@@ -46,8 +46,8 @@
 #ifndef OneWirePin
   #define OneWirePin        PE0     // Default Pin for OneWire bus (on E2-MOT PD-EN, right hand pin)
 #endif
-#define ESP8266Gpio0Pin     PD0     // ESP8266 GPIO0 (on EXP1)
-#define ESP8266RstPin       PA4     // ESP8266 RST (on EXP2 shared with the DS3234 CS pin)
+#define AddonBootModePin    PD0     // ESP8266 GPIO0 (on EXP1)
+#define AddonResetPin       PA4     // ESP8266 RST (on EXP2 shared with the DS3234 CS pin)
 
 // The PEC index sense is a logic level input, resets the PEC index on rising edge then waits for 60 seconds before allowing another reset
 #define PecPin              PA1
@@ -69,12 +69,24 @@
 // Soft SPI bus to stepper drivers
 #if PINMAP == FYSETC_S6_2
   #define SS_MOSI           PE14
+  #define Axis1_M0PORT      GPIOE
+  #define Axis1_M0BIT   GPIO_PIN_14
   #define SS_SCK            PE12
+  #define Axis1_M1PORT      GPIOE
+  #define Axis1_M1BIT   GPIO_PIN_12
   #define SS_MISO           PE13
+  #define Axis1_M3PORT       GPIOE
+  #define Axis1_M3BIT   GPIO_PIN_13
 #else
   #define SS_MOSI           PA7
+  #define Axis1_M0PORT       GPIOA
+  #define Axis1_M0BIT   GPIO_PIN_7
   #define SS_SCK            PA5
+  #define Axis1_M1PORT       GPIOA
+  #define Axis1_M1BIT   GPIO_PIN_5
   #define SS_MISO           PA6
+  #define Axis1_M3PORT       GPIOA
+  #define Axis1_M3BIT   GPIO_PIN_6
 #endif
 
 // Axis1 RA/Azm step/dir driver
@@ -86,9 +98,15 @@
 #define Axis1_M0        SS_MOSI     // Microstep Mode 0 or SPI MOSI
 #define Axis1_M1         SS_SCK     // Microstep Mode 1 or SPI SCK
 #define Axis1_M2            PE7     // Microstep Mode 2 or SPI CS or Decay Mode
+#define Axis1_M2PORT       GPIOE
+#define Axis1_M2BIT   GPIO_PIN_7
 #define Axis1_M3        SS_MISO     // SPI MISO/Fault
 #define Axis1_STEP         PE11     // Step
+#define Axis1_StpPORT      GPIOE
+#define Axis1_StpBIT GPIO_PIN_11
 #define Axis1_DIR          PE10     // Dir
+#define Axis1_DirPORT      GPIOE
+#define Axis1_DirBIT  GPIO_PIN_10
 #define Axis1_DECAY    Axis1_M2     // Decay mode
 #define Axis1_FAULT    Axis1_M3     // SPI MISO/Fault
 #define Axis1_HOME         PB14     // Sense home position Axis1 (on X-)
@@ -96,11 +114,21 @@
 // Axis2 Dec/Alt step/dir driver
 #define Axis2_EN            PD9     // Enable
 #define Axis2_M0        SS_MOSI     // Microstep Mode 0 or SPI MOSI
+#define Axis2_M0PORT       Axis1_M0PORT
+#define Axis2_M0BIT        Axis1_M0BIT
 #define Axis2_M1         SS_SCK     // Microstep Mode 1 or SPI SCK
+#define Axis2_M1PORT       Axis1_M1PORT
+#define Axis2_M1BIT        Axis1_M1BIT
 #define Axis2_M2           PE15     // Microstep Mode 2 or SPI CS or Decay Mode
+#define Axis2_M2PORT       GPIOE
+#define Axis2_M2BIT   GPIO_PIN_15
 #define Axis2_M3        SS_MISO     // SPI MISO
 #define Axis2_STEP          PD8     // Step
+#define Axis2_StpPORT      GPIOD
+#define Axis2_StpBIT  GPIO_PIN_8
 #define Axis2_DIR          PB12     // Dir
+#define Axis2_DirPORT      GPIOB
+#define Axis2_DirBIT  GPIO_PIN_12
 #define Axis2_DECAY    Axis2_M2     // Decay mode
 #define Axis2_FAULT    Axis2_M3     // SPI MISO/Fault
 #define Axis2_HOME         PB13     // Sense home position Axis2 (on Y-)

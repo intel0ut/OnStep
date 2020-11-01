@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------------
-// Pin map for OnStep MaxESP Version 3.x (ESP32S)
+// Pin map for OnStep Instein ESP1 (ESP32)
 
 #if defined(ESP32)
 
@@ -15,12 +15,11 @@
 #ifndef OneWirePin
   #define OneWirePin       Aux8     // Default Pin for one wire bus
 #endif
-//#define ESP8266Gpio0Pin      26     // ESP8266 GPIO0 (Dir2)
-//#define ESP8266RstPin      Aux2     // ESP8266 RST
 
-// these two pinfs are custom pins used by Instein to allow writing ESP8266 flash
-#define EnableMultiserial    36
-#define WifiReset             2
+// two pins are custom pins used by Instein to allow writing ESP8266 flash
+#define AddonTriggerPin      36     // ESP8266 pin to trigger serial passthrough mode
+#define AddonBootModePin    OFF     // ESP8266 GPIO0 (disabled)
+#define AddonResetPin         2     // ESP8266 RST
 
 // The PEC index sense is a logic level input, resets the PEC index on rising edge then waits for 60 seconds before allowing another reset
 #define PecPin               36
@@ -52,7 +51,7 @@
 #define Axis1_FAULT    Axis2_M3     // SPI MISO/Fault
 
 // Axis2 Dec/Alt step/dir driver
-#define Axis2_EN             12     // Enable
+#define Axis2_EN         SHARED     // Enable pin control shared with Axis1
 #define Axis2_M0             13     // Microstep Mode 0 or SPI MOSI
 #define Axis2_M1             14     // Microstep Mode 1 or SPI SCK
 #define Axis2_M2              5     // Microstep Mode 2 or SPI CS
@@ -64,9 +63,9 @@
 #define Axis2_FAULT    Axis2_M3     // SPI MISO/Fault
 
 // For rotator stepper driver
-#define Axis3_EN             -1     // Enable
-#define Axis3_STEP          2     // Step
-#define Axis3_DIR          15     // Dir
+#define Axis3_EN            OFF     // Enable
+#define Axis3_STEP            2     // Step
+#define Axis3_DIR            15     // Dir
 
 // For focuser1 stepper driver
 #define Axis4_EN           Aux2     // Enable
@@ -74,7 +73,7 @@
 #define Axis4_DIR            15     // Dir
 
 // For focuser2 stepper driver
-#define Axis5_EN             -1     // Enable
+#define Axis5_EN            OFF     // Enable
 #define Axis5_STEP            2     // Step
 #define Axis5_DIR            15     // Dir
 

@@ -1,7 +1,8 @@
-// MaxESP v3 specific pins validation
+// InsteinESP1 specific pins validation
 
 // SERIAL PORTS ------------------------------------------------------------------------------------------------------------
 
+<<<<<<< HEAD
   #if ASSIGNED_AUX2 != PIN_NOT_ASSIGNED
     #error "Configuration (Config.h): SERIAL_B_ESP_FLASHING enabled but Aux2 is already in use, choose one feature on Aux2."
   #else
@@ -12,6 +13,16 @@
       #undef Axis4_EN
       #define Axis4_EN -1
     #endif
+=======
+#if ASSIGNED_AUX2 != PIN_NOT_ASSIGNED
+  #error "Configuration (Config.h): SERIAL_B_ESP_FLASHING enabled but Aux2 is already in use, choose one feature on Aux2."
+#else
+  #undef ASSIGNED_AUX2
+  #define ASSIGNED_AUX2 PIN_DEDICATED
+  // for the InsteinESP1 also undefine the focuser control EN pin since it is in use for other purposes
+  #undef Axis4_EN
+  #define Axis4_EN OFF
+>>>>>>> 14c4e26eda203fdc6608de8a0dacba6f95ccae5d
 #endif
 
 // USER FEEDBACK ----------------------------
